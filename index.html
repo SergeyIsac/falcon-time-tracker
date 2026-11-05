@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Falcon Time Tracker</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Falcon Time Tracker</h1>
+      <p>Track employee work sessions — add people, start/stop timers, review totals by period.</p>
+    </header>
+
+    <div id="flash" class="flash" role="status"></div>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Employees</h2>
+        <form id="form-add-employee" class="row">
+          <div>
+            <label for="employee-name">Name</label>
+            <input id="employee-name" name="name" placeholder="e.g. Alex Rivera" required>
+          </div>
+          <button type="submit">Add employee</button>
+        </form>
+        <ul id="employee-list" class="employee-list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Timer</h2>
+        <p class="hint">One active timer per employee. Stop before starting again (restart flow).</p>
+        <div class="row">
+          <div>
+            <label for="timer-employee">Employee</label>
+            <select id="timer-employee" required></select>
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label for="timer-task">Task description</label>
+            <textarea id="timer-task" placeholder="What are they working on?" required></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" id="btn-start">Start timer</button>
+          <button type="button" id="btn-stop" class="danger">Stop timer</button>
+        </div>
+      </section>
+
+      <section class="panel full">
+        <h2>Report</h2>
+        <form id="form-report" class="row">
+          <div>
+            <label for="report-from">From</label>
+            <input type="date" id="report-from" required>
+          </div>
+          <div>
+            <label for="report-to">To</label>
+            <input type="date" id="report-to" required>
+          </div>
+          <div>
+            <label for="report-employee">Employee</label>
+            <select id="report-employee">
+              <option value="">All employees</option>
+            </select>
+          </div>
+          <button type="submit" class="secondary">Show report</button>
+        </form>
+
+        <div id="totals" class="totals"></div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Employee</th>
+              <th>Task</th>
+              <th>Started</th>
+              <th>Ended</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody id="entries-body">
+            <tr><td colspan="5" class="empty">Load a report to see entries.</td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
